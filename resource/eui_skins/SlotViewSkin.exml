@@ -7,8 +7,14 @@
              height="201.5" />
     <e:Image id="kake" source="slot_kake_png" x="393.25" y="492" anchorOffsetX="0" width="109.5" anchorOffsetY="0"
              height="201.5" />
-    <e:Image id="slotstart" source="slot_start_png" y="738.5" scaleX="0.75" scaleY="0.75" horizontalCenter="0" />
-    <e:Label text="やめて,やめて,やめて" x="222.75" y="778.75" anchorOffsetX="0" width="152" anchorOffsetY="0" height="17"
-             size="15" />
+	<e:Group id="startgroup" width="366" height="95" x="136" y="738.5" anchorOffsetX="0" anchorOffsetY="0">
+		<e:Image id="slotstart" source="slot_start_png" y="0" scaleX="0.75" scaleY="0.75" horizontalCenter="0" x="0"/>
+		<e:Label text="やめて,やめて,やめて" anchorOffsetX="0" width="152" anchorOffsetY="0" height="17" size="15" visible="true" horizontalCenter="-21" verticalCenter="0"/>
+	</e:Group>
+
+	<e:Group id="stopgroup" width="75" height="75" y="750" anchorOffsetX="0" anchorOffsetY="0" horizontalCenter="0.5"  visible="false">
+        <e:Image id="stop_over" source="slot_stop_over_png" y="0"  x="0" width="75" height="75"/>
+        <e:Image id="stop_up" source="slot_stop_up_png" y="0"  x="0" width="75" height="75" visible="false"/>
+    </e:Group>
 
 </e:Skin>

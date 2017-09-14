@@ -1,6 +1,10 @@
 class GameScene extends eui.Component {
 
-    public slotstart: eui.Image;
+    public startgroup: eui.Group;
+    public stopgroup: eui.Group;
+    public stop_over: eui.Image;
+    public stop_up: eui.Image;
+
     public constructor() {
         super();
         this.skinName = "SlotViewSkin";
@@ -8,7 +12,7 @@ class GameScene extends eui.Component {
     }
 
     /**
-     * 处理一些遮罩，优化图片
+     * 处理一些遮罩，优化图片和开始
      */
     private onAddToStage(event: egret.Event) {
 
@@ -16,6 +20,7 @@ class GameScene extends eui.Component {
         this.addSixSlider(139.5, 492);
 
         //添加start事件
+        this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
 
 
 
@@ -67,6 +72,28 @@ class GameScene extends eui.Component {
     /**
      * 添加start
      */
+    private gameStart() {
+        console.log("start!");
+        this.startgroup.visible = false;
+        this.stopgroup.visible = true;
+        this.stop_up.visible = false;
+        this.stop_over.visible = true;
+
+        //添加stop
+        this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
+
+
+    }
+
+    /**
+     * 添加stop
+     */
+    private gameStop() {
+        console.log("stop!");
+        this.stop_up.visible = true;
+        this.stop_over.visible = false;
+
+    }
 
 
 }

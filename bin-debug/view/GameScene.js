@@ -20,10 +20,13 @@ var GameScene = (function (_super) {
         return _this;
     }
     /**
-     * 处理一些遮罩，优化图片
+     * 处理一些遮罩，优化图片和开始
      */
     GameScene.prototype.onAddToStage = function (event) {
+        //把slider添加到框里
         this.addSixSlider(139.5, 492);
+        //添加start事件
+        this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
     };
     /**
      * 生成6张slider
@@ -61,6 +64,26 @@ var GameScene = (function (_super) {
         mask.graphics.drawRect(x, y, 105, 201);
         mask.graphics.endFill();
         return mask;
+    };
+    /**
+     * 添加start
+     */
+    GameScene.prototype.gameStart = function () {
+        console.log("start!");
+        this.startgroup.visible = false;
+        this.stopgroup.visible = true;
+        this.stop_up.visible = false;
+        this.stop_over.visible = true;
+        //添加stop
+        this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
+    };
+    /**
+     * 添加stop
+     */
+    GameScene.prototype.gameStop = function () {
+        console.log("stop!");
+        this.stop_up.visible = true;
+        this.stop_over.visible = false;
     };
     return GameScene;
 }(eui.Component));
