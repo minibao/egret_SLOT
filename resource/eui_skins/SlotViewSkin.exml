@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SlotViewSkin" height="1136" width="640" xmlns:e="http://ns.egret.com/eui">
+	<e:Image id="slot_skin" width="80%" source="slot_back_jpg" horizontalCenter="0" verticalCenter="0"/>
+	<e:Image id="kake0" source="slot_kake_png" x="137.25" y="492" anchorOffsetX="0" width="109.5" anchorOffsetY="0" height="201.5" />
+	<!--<e:Rect id="rect_kake0" width="109.5" height="201.5" x="137.25" y="492" />-->
+    <e:Image id="kake1" source="slot_kake_png" x="265.25" y="492" anchorOffsetX="0" width="109.5" anchorOffsetY="0"
+             height="201.5" />
+    <e:Image id="kake" source="slot_kake_png" x="393.25" y="492" anchorOffsetX="0" width="109.5" anchorOffsetY="0"
+             height="201.5" />
+    <e:Image id="slotstart" source="slot_start_png" y="738.5" scaleX="0.75" scaleY="0.75" horizontalCenter="0" />
+    <e:Label text="やめて,やめて,やめて" x="222.75" y="778.75" anchorOffsetX="0" width="152" anchorOffsetY="0" height="17"
+             size="15" />
+
+</e:Skin>
