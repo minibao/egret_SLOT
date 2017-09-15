@@ -24,7 +24,9 @@ var GameScene = (function (_super) {
      */
     GameScene.prototype.onAddToStage = function (event) {
         //把slider添加到框里
-        this.addSixSlider(139.5, 492);
+        // this.addSixSlider(139.5, 492);
+        this.slider = new Slider.SliderScroll();
+        this.addChild(this.slider);
         //添加start事件
         this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
     };
@@ -74,6 +76,8 @@ var GameScene = (function (_super) {
         this.stopgroup.visible = true;
         this.stop_up.visible = false;
         this.stop_over.visible = true;
+        //控制slider开始翻滚
+        this.slider.startRoll();
         //添加stop
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
     };
@@ -84,6 +88,10 @@ var GameScene = (function (_super) {
         console.log("stop!");
         this.stop_up.visible = true;
         this.stop_over.visible = false;
+        var rad = Math.floor(Math.random() * 6 + 1);
+        //控制slider停止翻滚
+        rad = 3;
+        this.slider.stopScroll(rad);
     };
     return GameScene;
 }(eui.Component));

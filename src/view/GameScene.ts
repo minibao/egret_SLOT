@@ -5,6 +5,8 @@ class GameScene extends eui.Component {
     public stop_over: eui.Image;
     public stop_up: eui.Image;
 
+    private slider: Slider.SliderScroll;//为了调用sliderscroll里面的方法
+
     public constructor() {
         super();
         this.skinName = "SlotViewSkin";
@@ -17,12 +19,12 @@ class GameScene extends eui.Component {
     private onAddToStage(event: egret.Event) {
 
         //把slider添加到框里
-        this.addSixSlider(139.5, 492);
+        // this.addSixSlider(139.5, 492);
+        this.slider = new Slider.SliderScroll();
+        this.addChild(this.slider);
 
         //添加start事件
         this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
-
-
 
     }
 
@@ -79,6 +81,9 @@ class GameScene extends eui.Component {
         this.stop_up.visible = false;
         this.stop_over.visible = true;
 
+        //控制slider开始翻滚
+        this.slider.startRoll();
+
         //添加stop
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
 
@@ -93,7 +98,10 @@ class GameScene extends eui.Component {
         this.stop_up.visible = true;
         this.stop_over.visible = false;
 
+        var rad = Math.floor(Math.random() * 6 + 1);
+        //控制slider停止翻滚
+        rad = 3;
+        this.slider.stopScroll(rad);
+
     }
-
-
 }
