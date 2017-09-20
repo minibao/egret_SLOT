@@ -4,6 +4,9 @@ class GameScene extends eui.Component {
     public stopgroup: eui.Group;
     public stop_over: eui.Image;
     public stop_up: eui.Image;
+    public kake0: eui.Image;
+    public kake1: eui.Image;
+    public kake: eui.Image;
 
     private slider: Slider.SliderScroll;//为了调用sliderscroll里面的方法
 
@@ -22,6 +25,11 @@ class GameScene extends eui.Component {
         // this.addSixSlider(139.5, 492);
         this.slider = new Slider.SliderScroll();
         this.addChild(this.slider);
+
+        //把kake置顶
+        this.setChildIndex(this.kake0, this.numChildren - 1);
+        this.setChildIndex(this.kake1, this.numChildren - 1);
+        this.setChildIndex(this.kake, this.numChildren - 1);
 
         //添加start事件
         this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
@@ -81,12 +89,19 @@ class GameScene extends eui.Component {
         this.stop_up.visible = false;
         this.stop_over.visible = true;
 
+        this.removeChild(this.slider);//删除之前的slider
+        this.slider = new Slider.SliderScroll();//添加新的slider
+        this.addChild(this.slider);
+        //把kake置顶
+        this.setChildIndex(this.kake0, this.numChildren - 1);
+        this.setChildIndex(this.kake1, this.numChildren - 1);
+        this.setChildIndex(this.kake, this.numChildren - 1);
+
         //控制slider开始翻滚
         this.slider.startRoll();
-
         //添加stop
+        this.stop_over.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
-
 
     }
 
@@ -98,10 +113,19 @@ class GameScene extends eui.Component {
         this.stop_up.visible = true;
         this.stop_over.visible = false;
 
-        var rad = Math.floor(Math.random() * 6 + 1);
+        var rad1 = Math.floor(Math.random() * 6 + 1);
+        var rad2 = Math.floor(Math.random() * 6 + 1);
+        var rad3 = Math.floor(Math.random() * 6 + 1);
+
         //控制slider停止翻滚
-        rad = 3;
-        this.slider.stopScroll(rad);
+        console.log(rad1, rad2, rad3);
+        this.slider.stopScroll(rad1, rad2, rad3, (r) => {//r回调回来的结果，当r=true时，执行if里的操作
+            if (r) {
+                this.startgroup.visible = true;
+                this.stop_up.visible = false;
+                this.stop_over.visible = false;
+            }
+        });
 
     }
 }

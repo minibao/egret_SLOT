@@ -27,6 +27,10 @@ var GameScene = (function (_super) {
         // this.addSixSlider(139.5, 492);
         this.slider = new Slider.SliderScroll();
         this.addChild(this.slider);
+        //把kake置顶
+        this.setChildIndex(this.kake0, this.numChildren - 1);
+        this.setChildIndex(this.kake1, this.numChildren - 1);
+        this.setChildIndex(this.kake, this.numChildren - 1);
         //添加start事件
         this.startgroup.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStart, this);
     };
@@ -76,22 +80,39 @@ var GameScene = (function (_super) {
         this.stopgroup.visible = true;
         this.stop_up.visible = false;
         this.stop_over.visible = true;
+        this.removeChild(this.slider); //删除之前的slider
+        this.slider = new Slider.SliderScroll(); //添加新的slider
+        this.addChild(this.slider);
+        //把kake置顶
+        this.setChildIndex(this.kake0, this.numChildren - 1);
+        this.setChildIndex(this.kake1, this.numChildren - 1);
+        this.setChildIndex(this.kake, this.numChildren - 1);
         //控制slider开始翻滚
         this.slider.startRoll();
         //添加stop
+        this.stop_over.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
     };
     /**
      * 添加stop
      */
     GameScene.prototype.gameStop = function () {
+        var _this = this;
         console.log("stop!");
         this.stop_up.visible = true;
         this.stop_over.visible = false;
-        var rad = Math.floor(Math.random() * 6 + 1);
+        var rad1 = Math.floor(Math.random() * 6 + 1);
+        var rad2 = Math.floor(Math.random() * 6 + 1);
+        var rad3 = Math.floor(Math.random() * 6 + 1);
         //控制slider停止翻滚
-        rad = 3;
-        this.slider.stopScroll(rad);
+        console.log(rad1, rad2, rad3);
+        this.slider.stopScroll(rad1, rad2, rad3, function (r) {
+            if (r) {
+                _this.startgroup.visible = true;
+                _this.stop_up.visible = false;
+                _this.stop_over.visible = false;
+            }
+        });
     };
     return GameScene;
 }(eui.Component));
