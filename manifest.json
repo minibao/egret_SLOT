@@ -14,6 +14,7 @@
 		"bin-debug/Main.js",
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/view/GameScene.js",
+		"bin-debug/view/MusicScene.js",
 		"bin-debug/view/SliderScroll.js"
 	]
 }

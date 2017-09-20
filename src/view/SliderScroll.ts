@@ -160,7 +160,7 @@ module Slider {
             this.etimer = new egret.Timer(500, 0);
 
             this.etimer.addEventListener(egret.TimerEvent.TIMER, function timerFunc() {
-                
+        
                 //第一组
                 if (this.speed1 == -5) {
                     this.etimer.stop();

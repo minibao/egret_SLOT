@@ -92,6 +92,11 @@ var GameScene = (function (_super) {
         //添加stop
         this.stop_over.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
+        //播放开始声音
+        this.mus_star = new MusicScene();
+        this.mus_star.addMusic("mus_start_mp3", 1.7, 1);
+        this.mus_move = new MusicScene();
+        this.mus_move.addMusic("mus_move_mp3", 0, -1);
     };
     /**
      * 添加stop
@@ -104,6 +109,10 @@ var GameScene = (function (_super) {
         var rad1 = Math.floor(Math.random() * 6 + 1);
         var rad2 = Math.floor(Math.random() * 6 + 1);
         var rad3 = Math.floor(Math.random() * 6 + 1);
+        //停止声音
+        this.mus_move.musicSound(0.3);
+        this.mus_stop = new MusicScene();
+        this.mus_stop.addMusic("guzhang_mp3", 0, -1);
         //控制slider停止翻滚
         console.log(rad1, rad2, rad3);
         this.slider.stopScroll(rad1, rad2, rad3, function (r) {
@@ -111,6 +120,10 @@ var GameScene = (function (_super) {
                 _this.startgroup.visible = true;
                 _this.stop_up.visible = false;
                 _this.stop_over.visible = false;
+                _this.mus_stop.musicStop();
+                var over = new MusicScene();
+                over.addMusic("over_mp3", 0, 1);
+                over.musicSound(1);
             }
         });
     };

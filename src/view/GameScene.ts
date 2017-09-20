@@ -8,6 +8,11 @@ class GameScene extends eui.Component {
     public kake1: eui.Image;
     public kake: eui.Image;
 
+    //申明声音
+    private mus_star;
+    private mus_move;
+    private mus_stop;
+
     private slider: Slider.SliderScroll;//为了调用sliderscroll里面的方法
 
     public constructor() {
@@ -102,6 +107,13 @@ class GameScene extends eui.Component {
         this.stop_over.removeEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
         this.stop_over.addEventListener(egret.TouchEvent.TOUCH_TAP, this.gameStop, this);
 
+        //播放开始声音
+        this.mus_star = new MusicScene();
+        this.mus_star.addMusic("mus_start_mp3", 1.7, 1);
+        this.mus_move = new MusicScene();
+        this.mus_move.addMusic("mus_move_mp3", 0, -1);
+
+
     }
 
     /**
@@ -116,6 +128,11 @@ class GameScene extends eui.Component {
         var rad2 = Math.floor(Math.random() * 6 + 1);
         var rad3 = Math.floor(Math.random() * 6 + 1);
 
+        //停止声音
+        this.mus_move.musicSound(0.3);
+        this.mus_stop = new MusicScene();
+        this.mus_stop.addMusic("guzhang_mp3", 0, -1);
+
         //控制slider停止翻滚
         console.log(rad1, rad2, rad3);
         this.slider.stopScroll(rad1, rad2, rad3, (r) => {//r回调回来的结果，当r=true时，执行if里的操作
@@ -123,8 +140,13 @@ class GameScene extends eui.Component {
                 this.startgroup.visible = true;
                 this.stop_up.visible = false;
                 this.stop_over.visible = false;
+
+                this.mus_stop.musicStop();
+                
+                var over = new MusicScene();
+                over.addMusic("over_mp3", 0, 1);
+                over.musicSound(1);
             }
         });
-
     }
 }

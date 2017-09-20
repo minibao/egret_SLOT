@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,slot_back_jpg,slot_kake_png,slot_stop_over_png,slot_stop_up_png,slot_start_jpg,slot_start_png,1_png,2_png,3_png,4_png,5_png,6_png,slider_png,slider1_png,slot_kake01_png",
+			"keys": "checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,bg_jpg,egret_icon_png,description_json,slot_back_jpg,slot_kake_png,slot_stop_over_png,slot_stop_up_png,slot_start_jpg,slot_start_png,1_png,2_png,3_png,4_png,5_png,6_png,slider_png,slider1_png,slot_kake01_png,mus_move_mp3,mus_stop_mp3,mus_start_mp3,guzhang_mp3,over_mp3",
 			"name": "preload"
 		}
 	],
@@ -210,6 +210,31 @@
 			"name": "slot_kake01_png",
 			"type": "image",
 			"url": "imgs/slot_kake01.png"
+		},
+		{
+			"name": "mus_move_mp3",
+			"type": "sound",
+			"url": "music/mus_move.mp3"
+		},
+		{
+			"name": "mus_stop_mp3",
+			"type": "sound",
+			"url": "music/mus_stop.mp3"
+		},
+		{
+			"name": "mus_start_mp3",
+			"type": "sound",
+			"url": "music/mus_start.mp3"
+		},
+		{
+			"name": "guzhang_mp3",
+			"type": "sound",
+			"url": "music/guzhang.mp3"
+		},
+		{
+			"name": "over_mp3",
+			"type": "sound",
+			"url": "music/over.mp3"
 		}
 	]
 }
