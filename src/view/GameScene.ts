@@ -36,8 +36,6 @@ class GameScene extends eui.Component {
 
     }
 
-    
-
     /**
      * 生成6张slider
      */
